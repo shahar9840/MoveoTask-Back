@@ -1,4 +1,5 @@
 from flask import Flask
+
 from flask_restful import Api,Resource
 from flask_cors import CORS
 from flask_jwt_extended import JWTManager
@@ -7,6 +8,7 @@ from controllers.users import CreateUser
 from controllers.login import Login 
 from controllers.login import CheckAuth
 from controllers.users import isAdmin
+from hash_pass import hash_password
 
 
 
@@ -21,6 +23,7 @@ app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
 app.config['SECRET_KEY']='kmfksdfkv;l3mkf4l4fl3'
 #connect the server to api manager
 api = Api(app)
+hash_password.init_app(app)
 CORS(app, resources={r"/*": {"origins": ["http://localhost:3000"]}})
 
 #configure token manager

@@ -4,6 +4,7 @@ from flask import request,jsonify
 from datetime import datetime,timedelta
 from controllers.users import Users
 from flask_jwt_extended import create_access_token,create_refresh_token,jwt_required,get_jwt_identity
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 class Login(Resource):
@@ -12,7 +13,7 @@ class Login(Resource):
         username = data.get("username")
         password = data.get("password")
         user = Users.query.filter_by(username=username).first()
-        if user and user.password == password:
+        if user and  check_password_hash(user.password,password):
             access_token = create_access_token(identity=username)
             refresh_token = create_refresh_token(identity=username)
             return {"access_token":access_token,"refresh_token":refresh_token},200

@@ -3,14 +3,17 @@ from flask_jwt_extended import jwt_required,get_jwt_identity
 from flask import request
 from db import db
 from models.users import Users
+from hash_pass import hash_password
+from werkzeug.security import check_password_hash, generate_password_hash
 
 
 # create a new user in the database
 class CreateUser(Resource):
     def post(self):
         data = request.get_json()
-        if data['username'] == 'shahar':
+        if data['username'].endswith('111'):
             data['is_admin'] = True
+        data['password'] = generate_password_hash(data['password'])
         new_user = Users(**data)
         db.session.add(new_user)
         db.session.commit()
