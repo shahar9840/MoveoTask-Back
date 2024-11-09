@@ -1,0 +1,5 @@
+FROM python:3.10-slim
+WORKDIR /app
+COPY . .
+RUN pip install Flask Flask-RESTful Flask-SQLAlchemy Flask-Cors flask-socketio flask-jwt-extended Flask-Bcrypt eventlet
+CMD ["python", "server.py"]
