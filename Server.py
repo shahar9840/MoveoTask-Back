@@ -17,7 +17,7 @@ from controllers.songs import GetSongs
 app = Flask(__name__)
 
 # connect the server to database
-CORS(app,  cors_allowed_origins='*',resources={r"/*": {"origins": "*"}})
+CORS(app, resources={r"/*": {"origins": "https://moveo-task-front.vercel.app/"}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
 db.init_app(app)
 app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
@@ -45,4 +45,4 @@ api.add_resource(GetSongs,'/get_songs')
 api.add_resource(isSinger,'/is_singer')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True, port=50000, host='0.0.0.0', allow_unsafe_werkzeug=True)
+    socketio.run(app, debug=True,cors_allowed_origins="https://your-frontend-domain.com" , host='0.0.0.0', allow_unsafe_werkzeug=True)
