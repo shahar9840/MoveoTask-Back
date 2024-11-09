@@ -45,4 +45,4 @@ api.add_resource(GetSongs,'/get_songs')
 api.add_resource(isSinger,'/is_singer')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True,cors_allowed_origins="https://moveo-task-front.vercel.app" , host='0.0.0.0', allow_unsafe_werkzeug=True)
+    socketio.run(app, debug=True,cors_allowed_origins="https://moveo-task-front.vercel.app" )
