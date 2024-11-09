@@ -45,4 +45,4 @@ api.add_resource(GetSongs,'/get_songs')
 api.add_resource(isSinger,'/is_singer')
 
 if __name__ == '__main__':
-    socketio.run(app,debug=True,port=50000,host='0.0.0.0')
+    socketio.run(app, debug=True, port=50000, host='0.0.0.0', allow_unsafe_werkzeug=True)
