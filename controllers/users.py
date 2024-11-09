@@ -41,5 +41,5 @@ class isSinger(Resource):
     def get(self):
         current_user = get_jwt_identity()
         user = Users.query.filter_by(username=current_user).first()
-        
+        print('singer????',user.instrument == "Singer")
         return user.instrument == "Singer",200
