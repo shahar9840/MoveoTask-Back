@@ -17,13 +17,13 @@ from controllers.songs import GetSongs
 app = Flask(__name__)
 
 # connect the server to database
-CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
-app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite3"
-# app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
+CORS(app, resources={r"/*": {"origins": "*"}}) 
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite3"
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
 db.init_app(app)
 app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
 app.config['SECRET_KEY']='kmfksdfkv;l3mkf4l4fl3'
-socketio.init_app(app, cors_allowed_origins="http://localhost:3000")
+socketio.init_app(app, cors_allowed_origins="*")
 
 #connect the server to api manager
 api = Api(app)
@@ -47,4 +47,4 @@ api.add_resource(GetSongs,'/get_songs')
 api.add_resource(isSinger,'/is_singer')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True,port=5000)
+    socketio.run(app, debug=True,port=50000)
