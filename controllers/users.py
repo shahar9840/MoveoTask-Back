@@ -17,7 +17,7 @@ class CreateUser(Resource):
         new_user = Users(**data)
         db.session.add(new_user)
         db.session.commit()
-        print(new_user.serialize())
+
         return new_user.serialize(), 201
 
 # get all users from the database
@@ -33,7 +33,7 @@ class isAdmin(Resource):
     def get(self):
         current_user = get_jwt_identity()
         user = Users.query.filter_by(username=current_user).first()
-        print([user.is_admin])
+
         return {"is_admin":user.is_admin},200    
     
 class isSinger(Resource):
@@ -41,7 +41,7 @@ class isSinger(Resource):
     def get(self):
         current_user = get_jwt_identity()
         user = Users.query.filter_by(username=current_user).first()
-        print('singer????',user.instrument == "Singer")
+
         return user.instrument == "Singer",200
     
 class Check(Resource):

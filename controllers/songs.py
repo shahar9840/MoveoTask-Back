@@ -110,14 +110,14 @@ class GetSongs(Resource):
 
 @socketio.on('user_connected')
 def handle_connect(data):
-    print("user_connected",data)
+
     socketio.emit('server_response', data)
     
 
 @socketio.on('disconnect')
-def handle_disconnect(data):
-    print("disconnected")
-    return ("disconnected:", data)
+def handle_disconnect():
+    print("Client disconnected")
+    
 
 
 

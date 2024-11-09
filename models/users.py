@@ -1,5 +1,6 @@
 from db import db 
 
+
 # create table in the of users in database
 class Users(db.Model):
     id = db.Column(db.Integer, primary_key=True)
@@ -19,4 +20,5 @@ class Users(db.Model):
             "is_admin": self.is_admin,
             "instrument": self.instrument
         }
+    
     
