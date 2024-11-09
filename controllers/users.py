@@ -43,3 +43,7 @@ class isSinger(Resource):
         user = Users.query.filter_by(username=current_user).first()
         print('singer????',user.instrument == "Singer")
         return user.instrument == "Singer",200
+    
+class Check(Resource):
+    def get(self):
+        return "hello"
