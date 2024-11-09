@@ -17,7 +17,8 @@ from controllers.songs import GetSongs
 app = Flask(__name__)
 
 # connect the server to database
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///data.db'
+CORS(app, resources={r"/*": {"origins": "http://localhost:3000"}})
+app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
 db.init_app(app)
 app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
 app.config['SECRET_KEY']='kmfksdfkv;l3mkf4l4fl3'
@@ -26,7 +27,6 @@ socketio.init_app(app, cors_allowed_origins='*')
 #connect the server to api manager
 api = Api(app)
 hash_password.init_app(app)
-CORS(app, cors_allowed_origins="*")
 
 #configure token manager
 jwt = JWTManager(app)
