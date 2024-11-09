@@ -17,12 +17,12 @@ from controllers.songs import GetSongs
 app = Flask(__name__)
 
 # connect the server to database
-CORS(app, resources={r"/*": {"origins": "https://moveo-task-front.vercel.app"}})
+CORS(app, resources={r"/*": {"origins": "https://moveo-task-front-ly6e02p9l-shahars-projects-d7a43d16.vercel.app"}})
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
 db.init_app(app)
 app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
 app.config['SECRET_KEY']='kmfksdfkv;l3mkf4l4fl3'
-socketio.init_app(app,  resources={r"/*": {"origins": "https://moveo-task-front.vercel.app"}}) 
+socketio.init_app(app,  resources={r"/*": {"origins": "https://moveo-task-front-ly6e02p9l-shahars-projects-d7a43d16.vercel.app"}}) 
 
 #connect the server to api manager
 api = Api(app)
