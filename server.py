@@ -23,7 +23,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwlo
 db.init_app(app)
 app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
 app.config['SECRET_KEY']='kmfksdfkv;l3mkf4l4fl3'
-socketio.init_app(app, cors_allowed_origins="https://moveo-task-front.vercel.app/")
+socketio.init_app(app, cors_allowed_origins="https://moveo-task-front-91pcq6nhp-shahars-projects-d7a43d16.vercel.app")
 
 #connect the server to api manager
 api = Api(app)
