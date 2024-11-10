@@ -14,6 +14,7 @@ from controllers.songs import GetSongs
 
 
 
+
 app = Flask(__name__)
 
 # connect the server to database
@@ -47,4 +48,4 @@ api.add_resource(GetSongs,'/get_songs')
 api.add_resource(isSinger,'/is_singer')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True,host='0.0.0.0',port=5001)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5001, allow_unsafe_werkzeug=True)
