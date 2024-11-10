@@ -34,8 +34,8 @@ class isAdmin(Resource):
         current_user = get_jwt_identity()
         user = Users.query.filter_by(username=current_user).first()
 
-        return {"is_admin":user.is_admin},200    
-    
+        return {"is_admin":user.is_admin},200     
+# check if user is singer
 class isSinger(Resource):
     @jwt_required()
     def get(self):

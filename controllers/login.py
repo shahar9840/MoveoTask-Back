@@ -6,7 +6,7 @@ from controllers.users import Users
 from flask_jwt_extended import create_access_token,create_refresh_token,jwt_required,get_jwt_identity
 from werkzeug.security import check_password_hash, generate_password_hash
 
-
+# login controller
 class Login(Resource):
     def post(self):
         data = request.get_json()
@@ -18,7 +18,7 @@ class Login(Resource):
             refresh_token = create_refresh_token(identity=username)
             return {"access_token":access_token,"refresh_token":refresh_token},200
         return {"message":"Invalid username or password"},401
-
+# check if user is logged in
 class CheckAuth(Resource):
     @jwt_required()
     def get(self):

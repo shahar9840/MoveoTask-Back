@@ -107,13 +107,13 @@ class GetSongs(Resource):
 
         return songs, 200
     
-
+# connect the client to the server
 @socketio.on('user_connected')
 def handle_connect(data):
-
+# send the message to the client
     socketio.emit('server_response', data)
     
-
+# disconnect the client
 @socketio.on('disconnect')
 def handle_disconnect():
     print("Client disconnected")
