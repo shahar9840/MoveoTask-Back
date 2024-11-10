@@ -18,7 +18,7 @@ class CreateUser(Resource):
         db.session.add(new_user)
         db.session.commit()
 
-        return new_user.serialize(), 201
+        return new_user.serialize(), {'message':"user created"}
 
 # get all users from the database
 class UserAll(Resource):
