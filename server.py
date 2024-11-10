@@ -11,6 +11,7 @@ from controllers.users import isAdmin,isSinger
 from hash_pass import hash_password
 from socketio_instance import socketio  
 from controllers.songs import GetSongs
+import os
 
 
 
@@ -19,10 +20,10 @@ app = Flask(__name__)
 # connect the server to database
 CORS(app, resources={r"/*": {"origins": "*"}}) 
 # app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite3"
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
+app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get('DATABASE_URL')
 db.init_app(app)
-app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
-app.config['SECRET_KEY']='kmfksdfkv;l3mkf4l4fl3'
+app.config['JWT_SECRET_KEY'] = os.environ.get('SECRET_KEY')
+app.config['SECRET_KEY']=os.environ.get('SECRET_KEY')
 socketio.init_app(app, cors_allowed_origins="*")
 
 #connect the server to api manager
@@ -47,4 +48,4 @@ api.add_resource(GetSongs,'/get_songs')
 api.add_resource(isSinger,'/is_singer')
 
 if __name__ == '__main__':
-    socketio.run(app, debug=True,host='0.0.0.0',port=5001)
+    socketio.run(app, debug=True, host='0.0.0.0', port=5001, allow_unsafe_werkzeug=True)
