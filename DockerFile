@@ -1,21 +1,19 @@
-
-FROM python:3.10-slim
-
+FROM amd64/python:3.10-slim
 
 WORKDIR /app
 
+# Install system dependencies required for building mysqlclient
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    default-libmysqlclient-dev \
+    pkg-config \
+    && rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt requirements.txt
-
-
-RUN pip install --no-cache-dir -r requirements.txt
-
+# Install Python dependencies without using requirements.txt
+RUN pip install Flask Flask-RESTful Flask-SQLAlchemy Flask-Cors flask-socketio flask-jwt-extended Flask-Bcrypt mysqlclient
 
 COPY . .
 
+EXPOSE 5001
 
-EXPOSE 5000
-
-
-CMD ["python", "server.py"]
-
+CMD python server.py
