@@ -18,7 +18,7 @@ app = Flask(__name__)
 
 # connect the server to database
 CORS(app, resources={r"/*": {"origins": "*"}}) 
-# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite3"
+# app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite:///db.sqlite3"d
 app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:OfszSEcPnycLQiTGJWxLVgFwloynFJmf@autorack.proxy.rlwy.net:24126/railway'
 db.init_app(app)
 app.config['JWT_SECRET_KEY'] = 'kmfksdfkv;l3mkf4l4fl3'
